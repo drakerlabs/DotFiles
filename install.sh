@@ -3,6 +3,9 @@
 # Symlink all files in conf to ~/.home
 
 pwd=`pwd`
+
+git submodule init
+
 for file in `ls $pwd/conf`; do
   target="$pwd/conf/$file"
   destination="$HOME/.$file"
@@ -10,8 +13,8 @@ for file in `ls $pwd/conf`; do
   delete=false
   skip=false
   if [ -e $destination ]; then
-    echo "$destination exists."
-    echo "You may (s)kip this file, (b)ackup the existing file, or (d)elete the existing file"
+    echo
+    echo "$destination exists, you may (s)kip this file, (b)ackup the existing file, or (d)elete the existing file"
     read -n 1 option
     echo
     if [ "$option" == "s" ]; then
